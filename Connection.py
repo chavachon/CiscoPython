@@ -12,11 +12,11 @@ def connection(*args):
         
     tn = Telnet(host, port)
 
-    if(tn.expect(r'[>]'):
+    if(tn.expect([r'>'])):
        tn.write(b"enable\n")
        if (tn.expect(r'(Password)')):
            tn.write(enablepwd.encode('ascii') + b'\n')
-    elif (tn.expect(r'[#]'):
+    elif (tn.expect([r'#'])):
           print("Connection succeeded!!!")
 
     return(tn)
@@ -24,5 +24,3 @@ def connection(*args):
 def closeconnetion(tn):    
     tn.close()
     
-    
-
