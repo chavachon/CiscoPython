@@ -5,8 +5,12 @@ def connection(*args):
     username = args[1]
     password = args[2]
     enablepwd = args[3]
-
-    tn = Telnet(host)
+    if(args[4] != None):
+        port = args[4]
+    else:
+        port = 23
+        
+    tn = Telnet(host, port)
 
     if(tn.expect(r'[>]'):
        tn.write(b"enable\n")
